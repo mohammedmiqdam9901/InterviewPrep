@@ -4,26 +4,47 @@ package Test;
 import java.util.Arrays;
 import java.util.Arrays;
 
-public class Rangoli {
-
-    private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
-
+public class AlphabetRangoli {
     public static void main(String[] args) {
-        int size = 5;
-        String[] rangoli = new String[size - 1];
+        int size = 3; // Change the value of size as per your requirement
+        printAlphabetRangoli(size);
+    }
 
-        for (int i = 0; i < size - 1; i++) {
-            rangoli[i] = "";
-            for (int j = size - 2 - i; j >= 0; j--) {
-                rangoli[i] += ALPHABET.charAt(j);
-            }
-            for (int j = 1; j <= i; j++) {
-                rangoli[i] += ALPHABET.charAt(j);
+    public static void printAlphabetRangoli(int size) {
+        int n = 2 * size - 1;
+        char[][] grid = new char[n][n];
+        char startChar = (char) ('a' + size - 1);
+
+        // Initialize grid with '-'
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                grid[i][j] = '-';
             }
         }
 
-        for (int i = size - 1; i >= 0; i--) {
-            System.out.println(String.join("-", rangoli[i]));
+        // Fill the grid with characters
+        for (int i = 0; i < size; i++) {
+            int currentChar = startChar - i;
+            int left = size - 1;
+            int right = size - 1;
+
+            for (int j = 0; j <= i; j++) {
+                grid[i][left] = (char) currentChar; // Left side of the grid
+                grid[i][right] = (char) currentChar; // Right side of the grid
+                grid[n - i - 1][left] = (char) currentChar; // Bottom left side of the grid
+                grid[n - i - 1][right] = (char) currentChar; // Bottom right side of the grid
+                left--;
+                right++;
+                currentChar++;
+            }
+        }
+
+        // Print the grid
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(grid[i][j]);
+            }
+            System.out.println();
         }
     }
 }

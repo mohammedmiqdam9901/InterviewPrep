@@ -1,6 +1,5 @@
 package Test;
 
-import java.sql.SQLOutput;
 
 public class factorialNumber {
 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class wordOccurenceCount {
 
-    public static int CountingWords(String s1, String word)
+    public static void CountingWords(String s1, String word)
     {
         String arr[] = s1.split(" ");
         int count = 1;
@@ -22,12 +22,13 @@ public class wordOccurenceCount {
 
         for(String x : hm.keySet())
         {
-            if(word == x)
-                System.out.println("The Occurence of word "+x+ " is" +hm.get(x));
+            if(word.equals(x))
+                System.out.println("The Occurence of word "+x+ " is " +hm.get(x));
         }
     }
 
     public static void main(String[] args) {
         String s1 = "My name name name is Miqdam Miqdam Miqdam Miqdam";
+        CountingWords(s1, "name");
     }
 }
