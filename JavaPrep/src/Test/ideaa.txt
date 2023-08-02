@@ -1,3 +1,5 @@
 Testing one last time
 
 Checking Merge.
+
+Checking if this applies for commited changes too.
