@@ -1,5 +1,0 @@
-# Include only the Test folder and its contents
-JavaPrep/src/Test/*
-
-# Exclude all other files and directories
-/*
