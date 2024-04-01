@@ -1,1 +1,5 @@
+# Exclude everything except the src folder
+*
 
+# Include the src folder and its subfolders
+!JavaPrep/src/**
