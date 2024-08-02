@@ -7,6 +7,11 @@ public class jsonsplit {
         String s1 = "{\"key1\": \"value1\", \"key2\": \"value2\"}";
         String arr[] = s1.split(",\\s*");
 
+        for(String arrayElements : arr)
+        {
+            System.out.println(arrayElements);
+        }
+
         for(String s: arr)
         {
             String keypair[] = s.split(":\\s*");

@@ -36,6 +36,6 @@ public class StringRotation {
     }
 
     public static void main(String[] args) {
-        System.out.println(stringRotation("abcd",2));
+        System.out.println(stringRotation("123",2));
     }
 }

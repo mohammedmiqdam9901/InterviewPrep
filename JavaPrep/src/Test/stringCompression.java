@@ -33,7 +33,7 @@ public class stringCompression {
 
     public static void main(String[] args) {
 
-        System.out.println(compressingString("aaabbaccaac"));;
+        System.out.println(compressingString("aabbaa"));;
 
     }
 }

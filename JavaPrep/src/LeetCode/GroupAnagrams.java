@@ -1,36 +1,26 @@
 package LeetCode;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class GroupAnagrams {
 
     public static List<List<String>> groupAnagrams(String[] strs) {
+        if (strs == null || strs.length == 0) return new ArrayList<>();
 
-        List<List<String>> resultAnagrams = new ArrayList<>();
+        Map<String, List<String>> anagramsMap = new HashMap<>();
 
-        for(int i =0; i < strs.length; i++)
-        {
-            char arr[] = strs[i].toCharArray();
-            Arrays.sort(arr);
-            List<String> currentAnagrams = new ArrayList<String>();
-            currentAnagrams.add(strs[i]);
-            for(int j = i+1; j < strs.length; j++)
-            {
-                char arrNext[] = strs[j].toCharArray();
-                Arrays.sort(arrNext);
+        for (String str : strs) {
+            char[] charArray = str.toCharArray();
+            Arrays.sort(charArray);
+            String sortedStr = new String(charArray);
 
-                if(Arrays.equals(arr,arrNext))
-                    currentAnagrams.add(strs[j]);
+            if (!anagramsMap.containsKey(sortedStr)) {
+                anagramsMap.put(sortedStr, new ArrayList<>());
             }
-
-            resultAnagrams.add(currentAnagrams);
-
+            anagramsMap.get(sortedStr).add(str);
         }
 
-        return resultAnagrams;
-
+        return new ArrayList<>(anagramsMap.values());
     }
 
     public static void main(String[] args) {

@@ -1,36 +1,40 @@
 package LeetCode;
 
+import java.util.HashSet;
+
 public class LongestSubString {
 
-    public static int lengthOfLongestSubstring(String s) {
-        int n = s.length();
-        if (n == 0) {
-            return 0;
-        }
+    public static String lengthOfLongestSubstring(String s) {
 
-        String overallLongest = "";
-        String currentSubstring = "";
+        int startPointer = 0;
+        int endPointer = 0;
+        int max = 0;
+        String longestSubstring = "";
 
-        for (int i = 0; i < n; i++) {
-            char currentChar = s.charAt(i);
+        HashSet<Character> hm = new HashSet<>();
 
-            int charIndexInSubstring = currentSubstring.indexOf(currentChar);
-            if (charIndexInSubstring == -1) {
-                // Character is not in the currentSubstring, add it
-                currentSubstring += currentChar;
-            } else {
-                // Character is already in the currentSubstring, update overallLongest
-                overallLongest = (currentSubstring.length() > overallLongest.length()) ? currentSubstring : overallLongest;
-                // Move the index to the next position after the repeated character
-                i = charIndexInSubstring + 1;
-                currentSubstring = "";
+        while(endPointer < s.length())
+        {
+            if(!hm.contains(s.charAt(endPointer)))
+            {
+                hm.add(s.charAt(endPointer));
+                endPointer++;
+                if(endPointer - startPointer > max)
+                {
+                    max = endPointer - startPointer;
+                    longestSubstring = s.substring(startPointer,endPointer);
+                }
+            }
+            else
+            {
+
+                hm.remove(s.charAt(startPointer));
+                startPointer++;
             }
         }
 
-        // Check one more time after the loop ends
-        overallLongest = (currentSubstring.length() > overallLongest.length()) ? currentSubstring : overallLongest;
+        return longestSubstring;
 
-        return overallLongest.length();
     }
 
     public static void main(String[] args) {

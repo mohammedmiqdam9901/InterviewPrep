@@ -19,6 +19,6 @@ public class ASCIIOccurence {
     }
 
     public static void main(String[] args) {
-        characterCount("aabbcc");
+        characterCount("aabbcczzz");
     }
 }
